@@ -1,0 +1,154 @@
+#: import utils kivy.utils
+<Lbl@Label>:
+    size_hint: None, None
+    bold: True
+    color: [0,0,0,1]
+    size: self.texture_size
+    font_size: '25sp'
+
+<Main>:
+    FloatLayout:
+        id: container
+        canvas.before:
+            Color:
+                rgba: utils.get_color_from_hex('#730000')
+            Rectangle:
+                size: self.size
+                pos: self.pos
+            Color:
+                rgba: [0,0,0,1]
+            Line:
+                points: [(root.width/2,root.height*(7/8)), (root.width/2,root.height-30)]
+                width: 2
+        Image:
+            id: tt
+            source: 'imgs/timer.png'
+            size_hint: [.75, .5]
+            pos_hint: {'center_x':.5, 'top':.95}
+        Label:
+            id: timer
+            text: '00:00'
+            bold: True
+            font_size: '70sp'
+            size_hint: [None, None]
+            size: self.texture_size
+            color: [0,0,0,1]
+            pos_hint: {'center_x':.5, 'top':.77}
+        Lbl:
+            id: n1
+            text: '00'
+            pos_hint: {'top':.95, 'center_x':.55}
+        Lbl:
+            id: n2
+            text: '05'
+            pos_hint: {'top':.92, 'center_x':.72}
+        Lbl:
+            id: n3
+            text: '10'
+            pos_hint: {'top':.84, 'center_x':.86}
+        Lbl:
+            id: n4
+            text: '15'
+            pos_hint: {'top':.73, 'center_x':.92}
+        Lbl:
+            id: n5
+            text: '20'
+            pos_hint: {'top':.61, 'center_x':.87}
+        Lbl:
+            id: n6
+            text: '25'
+            pos_hint: {'top':.53, 'center_x':.72}
+        Lbl:
+            id: n7
+            text: '30'
+            pos_hint: {'top':.496, 'center_x':.5}
+        Lbl:
+            id: n8
+            text: '35'
+            pos_hint: {'top':.53, 'center_x':.28}
+        Lbl:
+            id: n9
+            text: '40'
+            pos_hint: {'top':.61, 'center_x':.13}
+        Lbl:
+            id: n10
+            text: '45'
+            pos_hint: {'top':.73, 'center_x':.08}
+        Lbl:
+            id: n11
+            text: '50'
+            pos_hint: {'top':.84, 'center_x':.14}
+        Lbl:
+            id: n12
+            text: '55'
+            pos_hint: {'top':.92, 'center_x':.28}
+        Lbl:
+            id: n13
+            text: '60'
+            pos_hint: {'top':.95, 'center_x':.45}
+
+        MDFillRoundFlatButton:
+            id: stop_timer
+            size_hint: [.9, .1]
+            pos_hint: {"top":.4, 'center_x':.5}
+            text: '[b]Cancel PomoDoro[/b]'
+            markup: True
+            font_size: '25sp'
+            theme_text_color: 'Custom'
+            text_color: [0,0,0,1]
+            md_bg_color: utils.get_color_from_hex('#006F00')
+            disabled: True
+            on_release:
+                app.stop_it()
+        
+        MDFillRoundFlatButton:
+            id: the50
+            size_hint:[.4,.2]
+            pos_hint: {"x":.55, 'top':.25}
+            text: '[b]Start a 50min\nPomoDoro[/b]'
+            theme_text_color: 'Custom'
+            text_color: [0,0,0,1]
+            font_size: '23sp'
+            markup: True
+            md_bg_color: utils.get_color_from_hex('#980000')
+            on_press:
+                self.disabled= True
+                the25.disabled= True
+                stop_timer.disabled= False
+                n11.color= [1,1,1,1]
+            on_release:
+                app.get_time(50)
+                app.is50= 'yes'
+                app.isbreak= True
+        Image:
+            source: 'imgs/leave2.png'
+            size_hint: [.5,.3]
+            pos_hint: {"top":.54, "x":.48}
+            allow_stretch: True
+            keep_rotio: False
+        MDFillRoundFlatButton:
+            id: the25
+            size_hint:[.4,.2]
+            pos_hint: {"x":.04, 'top':.25}
+            text: '[b]Start a 25min\nPomoDoro\n[color=#FFFFFF][size=14][RECOMMENDED][/size][/color][/b]'
+            theme_text_color: 'Custom'
+            text_color: [0,0,0,1]
+            font_size: '23sp'
+            markup: True
+            md_bg_color: utils.get_color_from_hex('#980000')
+            on_press:
+                self.disabled= True
+                the50.disabled= True
+                stop_timer.disabled= False
+                n6.color= [1,1,1,1]
+            on_release:
+                app.get_time(25)
+                app.is50= 'no'
+                app.isbreak= True
+        Image:
+            source: 'imgs/leave2.png'
+            size_hint: [.5,.3]
+            pos_hint: {"top":.54, "x":-0.03}
+            allow_stretch: True
+            keep_rotio: False
+                    

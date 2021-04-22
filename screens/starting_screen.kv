@@ -1,0 +1,51 @@
+#: import utils kivy.utils
+
+<Starting>:
+    canvas.before:
+        Color:
+            rgba: utils.get_color_from_hex('#730000')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    MDLabel:
+        size_hint: [.88, .1]
+        pos_hint: {'top':.95, 'center_x':.5}
+        halign: 'center'
+        text: '[color=#008200]P[/color]omo[color=#008200]Done[/color]'
+        markup: True
+        font_size: '55sp'
+        bold: True
+    Image:
+        source: 'imgs/leave.png'
+        size_hint: [.22,.25]
+        pos_hint: {'top':1.06, 'x':0}
+        allow_stretch: True
+        keep_rotio: False
+    Image:
+        source: 'imgs/clock.png'
+        size_hint: [.5, .3]
+        pos_hint: {"center_x":.5, 'top':.85}
+        allow_stretch: True
+        keep_rotio: False
+    MDCard:
+        id: the_card
+        pos_hint: {'top':.5, 'center_x':.5}
+        size_hint_x: None
+        size_hint_y: None
+        height: 200
+        width: 320
+        elevation: 0
+        md_bg_color: utils.get_color_from_hex('#990000')
+    MDFillRoundFlatButton:
+        id: btn
+        pos_hint: {'top':.1, 'center_x':.5}
+        size_hint: [.9, .08]
+        text: '[b]Take a PomoDoro[/b]'
+        theme_text_color: 'Custom'
+        text_color: [0,0,0,1]
+        font_size: '30sp'
+        markup: True
+        md_bg_color: utils.get_color_from_hex('#1D6000')
+        on_release:
+            app.switch_to_main()
+            

@@ -1,0 +1,14 @@
+#: kivy 1.11.1
+#: include 'screens\starting_screen.kv'
+#: include 'screens\main_screen.kv'
+
+FloatLayout:
+    ScreenManager:
+        id: screen_manager
+        Starting:
+            name: 'start_screen'
+            id: start_screen
+        Main:
+            name: 'main_screen'
+            id: main_screen
+            
